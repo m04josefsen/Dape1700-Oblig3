@@ -17,6 +17,10 @@ public class Billett {
         this.epost = epost;
     }
 
+    public Billett() {
+
+    }
+
     public String getFilm() {
         return film;
     }
