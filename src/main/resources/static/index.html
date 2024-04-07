@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bestilling av kinobilletter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style>
+        #innAntall {
+            width: 30px;
+        }
+
+        #fornavn {
+            padding-right: 9px;
+        }
+
+        #epost {
+            padding-right: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Bestilling av kinobilletter</h1>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="velgFilm">Velg film: </label>
+                        <select id="velgFilm">
+                            <option value="Oppenheimer">Oppenheimer</option>
+                            <option value="Inception">Inception</option>
+                            <option value="Interstellar">Interstellar</option>
+                        </select> <br/> <br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="innAntall">Antall</label>
+                        <input id="innAntall" type="text">
+                        <label id="feilmeldingAntall" for="innAntall"></label><br/><br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="innFornavn" id="fornavn">Fornavn</label>
+                        <input id="innFornavn" type="text">
+                        <label id="feilmeldingfornavn" for="innFornavn"></label><br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="innEtternavn">Etternavn</label>
+                        <input id="innEtternavn" type="text">
+                        <label id="feilmeldingetternavn" for="innEtternavn"></label><br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="innTelefonnr">Telefonnr</label>
+                        <input id="innTelefonnr" type="text">
+                        <label id="feilmeldingTelefonnr" for="innTelefonnr"></label><br/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="innEpost" id="epost">Epost</label>
+                        <input id="innEpost" type="text">
+                        <label id="feilmeldingEpost" for="innEpost"></label><br/> <br/>
+                    </div>
+                </form>
+
+                <button class="btn btn-primary" onclick="kjopBillett()">Kjøp billett</button> <br/> <br/>
+            </div>
+
+            <div class="col-md-8">
+                <h2>Alle billetter</h2> <br/>
+                <div id="resultat"></div> <br/>
+                <button class="btn btn-danger" onclick="slettAlle()">Slett alle billettene</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
