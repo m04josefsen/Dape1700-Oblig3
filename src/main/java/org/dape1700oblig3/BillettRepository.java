@@ -7,11 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.logging.ErrorManager;
+import java.util.logging.Logger;
 
 @Repository
 public class BillettRepository {
 
-    ErrorManager logger;
+    private static final Logger logger = Logger.getLogger(BillettRepository.class.getName());
+
 
     @Autowired
     private JdbcTemplate db;
@@ -22,7 +24,7 @@ public class BillettRepository {
             db.update(sql, inn.getFilm(), inn.getAntall(), inn.getFornavn(), inn.getEtternavn(), inn.getTelefonnr(), inn.getEpost());
             return true;
         } catch (Exception e) {
-            logger.error("Feil i lagreBillett: " + e);
+            logger.severe("Feil i lagreBillett: " + e);
             return false;
         }
     }
