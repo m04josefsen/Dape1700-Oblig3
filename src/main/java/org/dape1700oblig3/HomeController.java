@@ -18,7 +18,6 @@ public class HomeController {
 
     @PostMapping("/lagre")
     public void lagreBillett(Billett innBillett, HttpServletResponse response) throws IOException {
-        //FÅR DOBBELT LAGRING; SKJEDDE ETTER JEG LA TIL ERROR HANDLING
         if(!repository.lagreBillett(innBillett)) {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB - prøv igjen senere");
         }
