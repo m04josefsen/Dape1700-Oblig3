@@ -15,16 +15,16 @@ public class HomeController {
 
     @PostMapping("/lagre")
     public void lagreBillett(Billett innBillett) {
-        repository.lagreKunde(innBillett);
+        repository.lagreBillett(innBillett);
     }
 
     @GetMapping("/hentAlle")
     public List<Billett> hentBillett() {
-        return repository.hentKunder();
+        return repository.hentBillett();
     }
 
     @GetMapping("/slettAlle")
     public void slettAlle() {
-        repository.slettKunder();
+        repository.slettBillett();
     }
 }
