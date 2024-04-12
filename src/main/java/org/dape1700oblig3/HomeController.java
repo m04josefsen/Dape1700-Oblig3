@@ -29,7 +29,9 @@ public class HomeController {
     }
 
     @GetMapping("/slettAlle")
-    public void slettAlle() {
-        repository.slettBillett();
+    public void slettAlle(HttpServletResponse response) throws IOException {
+        if(!repository.slettBillett()) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB");
+        }
     }
 }

@@ -35,8 +35,14 @@ public class BillettRepository {
         return alleBilletter;
     }
 
-    public void slettBillett() {
+    public boolean slettBillett() {
         String sql = "DELETE FROM Billett";
-        db.update(sql);
+        try {
+            db.update(sql);
+            return true;
+        } catch (Exception e) {
+            logger.severe("Feil i slettBillett: " + e);
+            return false;
+        }
     }
 }
