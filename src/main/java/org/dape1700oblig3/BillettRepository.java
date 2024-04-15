@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.logging.ErrorManager;
 import java.util.logging.Logger;
 
 @Repository
