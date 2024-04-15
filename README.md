@@ -1,4 +1,7 @@
 # Data1700-Oblig 3
+
+Youtube link: https://youtu.be/g4_6vern1cE
+
 OsloMet brukernavn: majos6959
 
 GitHub brukernavn: m04josefsen
