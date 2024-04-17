@@ -34,4 +34,14 @@ public class HomeController {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB");
         }
     }
+
+    @GetMapping("/hentEnBillett")
+    public Billett hentEnBillett(int id) {
+        return repository.hentEnBillett(id);
+    }
+
+    @GetMapping("/slettEnBillett")
+    public void slettEnBillett(int id) {
+        repository.slettEnBillett(id);
+    }
 }
