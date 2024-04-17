@@ -64,6 +64,8 @@ function visResultat(billett) {
                 ut += "<tr>";
                 ut += "<td>" + b.film + "</td><td>" + b.antall + "</td><td>" + b.fornavn +
                       "</td><td>" + b.etternavn + "</td><td>" + b.telefonnr +  "</td><td>" + b.epost + "</td>";
+                ut += "<td> <a class='btn btn-primary' href="+b.id+"'endreBillett.html?id='>Endre</a></td>";
+                ut += "<td> <button class='btn btn-danger'onclick='slettEnKunde("+b.id+")'>Slett</button></td>";
                 ut += "</tr>";
             }
     ut += "</table>";
@@ -115,5 +117,12 @@ function slettAlle() {
             visResultat(billett)
         });
     });
+}
+
+function endreBillett() {
+
+}
+
+function slettEnKunde() {
 
 }
