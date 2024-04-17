@@ -35,9 +35,7 @@ function kjopBillett() {
 
     if(teller === 5) {
         $.post("lagre", billett, function() {
-            $.get("hentAlle", function(billett) {
-                visResultat(billett)
-            });
+            hentAlle();
         });
 
         //Tømmer input feltene
@@ -61,7 +59,6 @@ function visResultat(billett) {
         "</tr>";
 
     for(let b of billett) {
-        console.log(b.id);
         ut += "<tr>";
         ut += "<td>" + b.film + "</td><td>" + b.antall + "</td><td>" + b.fornavn +
             "</td><td>" + b.etternavn + "</td><td>" + b.telefonnr +  "</td><td>" + b.epost + "</td>";
@@ -114,9 +111,7 @@ function epostValidering(epost) {
 
 function slettAlle() {
     $.get("slettAlle", function() {
-        $.get("hentAlle", function(billett) {
-            visResultat(billett)
-        });
+        hentAlle()
     });
 }
 
@@ -127,8 +122,12 @@ function endreBillett() {
 function slettEnKunde(id) {
     const url = "/slettEnBillett?id=" + id;
     $.get(url, function() {
-        $.get("hentAlle", function(billett) {
-            visResultat(billett)
-        });
+        hentAlle()
+    })
+}
+
+function hentAlle() {
+    $.get("hentAlle", function(billett) {
+        visResultat(billett);
     })
 }
