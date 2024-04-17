@@ -1,6 +1,7 @@
 package org.dape1700oblig3;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.spel.ast.BeanReference;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -43,5 +44,15 @@ public class BillettRepository {
             logger.severe("Feil i slettBillett: " + e);
             return false;
         }
+    }
+
+    public Billett hentEnBillett(int id) {
+        String sql = "SELECT * FROM Billett WHERE id = ?";
+        return db.queryForObject(sql, BeanPropertyRowMapper.newInstance(Billett.class), id);
+    }
+
+    public void slettEnBillett(int id) {
+        String sql = "DELETE FROM Billett WHERE id = ?";
+        db.update(sql, id);
     }
 }
