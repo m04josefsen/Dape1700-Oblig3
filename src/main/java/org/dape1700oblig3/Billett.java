@@ -1,6 +1,7 @@
 package org.dape1700oblig3;
 
 public class Billett {
+    private int id;
     private String film;
     private int antall;
     private String fornavn;
@@ -8,7 +9,8 @@ public class Billett {
     private int telefonnr;
     private String epost;
 
-    public Billett(String film, int antall, String fornavn, String etternavn, int telefonnr, String epost) {
+    public Billett(int id, String film, int antall, String fornavn, String etternavn, int telefonnr, String epost) {
+        this.id = id;
         this.film = film;
         this.antall = antall;
         this.fornavn = fornavn;
@@ -19,6 +21,14 @@ public class Billett {
 
     public Billett() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFilm() {
