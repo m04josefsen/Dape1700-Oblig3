@@ -51,6 +51,11 @@ public class BillettRepository {
         return db.queryForObject(sql, BeanPropertyRowMapper.newInstance(Billett.class), id);
     }
 
+    public void oppdaterEnBillet(Billett innBillett) {
+        String sql = "UPDATE Billett SET film = ?, antall = ?, fornavn = ?, etternavn = ?, telefonnr = ?, epost = ? WHERE id = ?";
+        db.update(sql, innBillett.getFilm(), innBillett.getAntall(), innBillett.getFornavn(), innBillett.getEtternavn(), innBillett.getTelefonnr(), innBillett.getEpost(), innBillett.getId());
+    }
+
     public void slettEnBillett(int id) {
         String sql = "DELETE FROM Billett WHERE id = ?";
         db.update(sql, id);

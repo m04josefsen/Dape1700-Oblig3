@@ -40,6 +40,11 @@ public class HomeController {
         return repository.hentEnBillett(id);
     }
 
+    @PostMapping("/oppdaterEnBillett")
+    public void oppdaterEnBillett(Billett innBillett) {
+        repository.oppdaterEnBillet(innBillett);
+    }
+
     @GetMapping("/slettEnBillett")
     public void slettEnBillett(int id) {
         repository.slettEnBillett(id);
