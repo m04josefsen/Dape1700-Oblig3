@@ -38,18 +38,7 @@ function kjopBillett() {
             hentAlle();
         });
 
-        //Tømmer input feltene
-        document.getElementById("innAntall").value = "";
-        document.getElementById("innFornavn").value = "";
-        document.getElementById("innEtternavn").value = "";
-        document.getElementById("innTelefonnr").value = "";
-        document.getElementById("innEpost").value = "";
-
-        document.getElementById("feilmeldingAntall").innerHTML = "";
-        document.getElementById("feilmeldingfornavn").innerHTML = "";
-        document.getElementById("feilmeldingetternavn").innerHTML = "";
-        document.getElementById("feilmeldingTelefonnr").innerHTML = "";
-        document.getElementById("feilmeldingEpost").innerHTML = "";
+        tomInputfelt();
     }
 }
 
@@ -174,25 +163,29 @@ function oppdaterBillett() {
             hentAlle();
         });
 
-        //Tømmer input feltene
-        document.getElementById("innAntall").value = "";
-        document.getElementById("innFornavn").value = "";
-        document.getElementById("innEtternavn").value = "";
-        document.getElementById("innTelefonnr").value = "";
-        document.getElementById("innEpost").value = "";
+        tomInputfelt()
 
-        document.getElementById("feilmeldingAntall").innerHTML = "";
-        document.getElementById("feilmeldingfornavn").innerHTML = "";
-        document.getElementById("feilmeldingetternavn").innerHTML = "";
-        document.getElementById("feilmeldingTelefonnr").innerHTML = "";
-        document.getElementById("feilmeldingEpost").innerHTML = "";
+        document.getElementById("oppdaterBtn").style.display = "none"
+        hentAlle();
     }
-
-
 }
 
 function hentAlle() {
     $.get("hentAlle", function(billett) {
         visResultat(billett);
     })
+}
+
+function tomInputfelt() {
+    document.getElementById("innAntall").value = "";
+    document.getElementById("innFornavn").value = "";
+    document.getElementById("innEtternavn").value = "";
+    document.getElementById("innTelefonnr").value = "";
+    document.getElementById("innEpost").value = "";
+
+    document.getElementById("feilmeldingAntall").innerHTML = "";
+    document.getElementById("feilmeldingfornavn").innerHTML = "";
+    document.getElementById("feilmeldingetternavn").innerHTML = "";
+    document.getElementById("feilmeldingTelefonnr").innerHTML = "";
+    document.getElementById("feilmeldingEpost").innerHTML = "";
 }
