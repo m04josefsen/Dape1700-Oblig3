@@ -1,6 +1,6 @@
 # Data1700-Oblig 3
 
-Youtube link: https://youtu.be/g4_6vern1cE
+Youtube link: https://youtu.be/nlYZwaoJ16I
 
 OsloMet brukernavn: majos6959
 
