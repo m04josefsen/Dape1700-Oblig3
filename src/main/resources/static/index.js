@@ -1,4 +1,5 @@
 let teller = 0;
+let userID;
 
 function kjopBillett() {
     const billett = {
@@ -112,9 +113,9 @@ function slettEnKunde(id) {
 }
 
 function endreBillett(id) {
+    userID = id;
     const url = "/hentEnBillett?id=" + id;
     $.get(url, function(billett) {
-        console.log(billett.id);
         document.getElementById("innAntall").value = billett.antall;
         document.getElementById("innFornavn").value = billett.fornavn;
         document.getElementById("innEtternavn").value = billett.etternavn;
@@ -122,11 +123,13 @@ function endreBillett(id) {
         document.getElementById("innEpost").value = billett.epost;
     });
 
-    document.getElementById("oppdaterBtn").style.display = "initial"
+    document.getElementById("oppdaterBtn").style.display = "initial";
+    document.getElementById("kjopBtn").style.display = "none";
 }
 
 function oppdaterBillett() {
     const billett = {
+        id : userID,
         film : $("#velgFilm").val(),
         antall : Number($("#innAntall").val()),
         fornavn : $("#innFornavn").val(),
@@ -165,7 +168,8 @@ function oppdaterBillett() {
 
         tomInputfelt()
 
-        document.getElementById("oppdaterBtn").style.display = "none"
+        document.getElementById("oppdaterBtn").style.display = "none";
+        document.getElementById("kjopBtn").style.display = "initial";
         hentAlle();
     }
 }
@@ -173,7 +177,7 @@ function oppdaterBillett() {
 function hentAlle() {
     $.get("hentAlle", function(billett) {
         visResultat(billett);
-    })
+    });
 }
 
 function tomInputfelt() {
