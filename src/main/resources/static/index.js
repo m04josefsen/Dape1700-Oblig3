@@ -62,7 +62,7 @@ function visResultat(billett) {
         ut += "<tr>";
         ut += "<td>" + b.film + "</td><td>" + b.antall + "</td><td>" + b.fornavn +
             "</td><td>" + b.etternavn + "</td><td>" + b.telefonnr +  "</td><td>" + b.epost + "</td>";
-        ut += "<td> <a class='btn btn-primary' href="+b.id+"'endreBillett.html?id='>Endre</a></td>";
+        ut += "<td> <button class='btn btn-primary'onclick='endreBillett("+b.id+")'>Endre</button></td>";
         ut += "<td> <button class='btn btn-danger'onclick='slettEnKunde("+b.id+")'>Slett</button></td>";
         ut += "</tr>";
     }
@@ -115,15 +115,80 @@ function slettAlle() {
     });
 }
 
-function endreBillett() {
-
-}
-
 function slettEnKunde(id) {
     const url = "/slettEnBillett?id=" + id;
     $.get(url, function() {
         hentAlle()
     })
+}
+
+function endreBillett(id) {
+    const url = "/hentEnBillett?id=" + id;
+    $.get(url, function(billett) {
+        console.log(billett.id);
+        document.getElementById("innAntall").value = billett.antall;
+        document.getElementById("innFornavn").value = billett.fornavn;
+        document.getElementById("innEtternavn").value = billett.etternavn;
+        document.getElementById("innTelefonnr").value = billett.telefonnr;
+        document.getElementById("innEpost").value = billett.epost;
+    });
+
+    document.getElementById("oppdaterBtn").style.display = "initial"
+}
+
+function oppdaterBillett() {
+    const billett = {
+        film : $("#velgFilm").val(),
+        antall : Number($("#innAntall").val()),
+        fornavn : $("#innFornavn").val(),
+        etternavn : $("#innEtternavn").val(),
+        telefonnr : Number($("#innTelefonnr").val()),
+        epost : $("#innEpost").val()
+    };
+
+    //Teller for å sjekke at input feltene er riktig
+    teller = 0;
+
+    //Input validering for antall;
+    if(isNaN(billett.antall) || billett.antall <= 0) {
+        let ut = "Du må skrive noe over 0 i antall";
+        ut = ut.fontcolor("RED");
+        document.getElementById("feilmeldingAntall").innerHTML = ut;
+    }
+    else {
+        teller++;
+    }
+
+    //Input validering for telefonnr;
+    telefonnrValidering(billett.telefonnr);
+
+    //Input validering for mail
+    epostValidering(billett.epost);
+
+    //Input validering for resten;
+    stringValidering(billett.fornavn, "fornavn");
+    stringValidering(billett.etternavn, "etternavn");
+
+    if(teller === 5) {
+        $.post("oppdaterEnBillett", billett, function() {
+            hentAlle();
+        });
+
+        //Tømmer input feltene
+        document.getElementById("innAntall").value = "";
+        document.getElementById("innFornavn").value = "";
+        document.getElementById("innEtternavn").value = "";
+        document.getElementById("innTelefonnr").value = "";
+        document.getElementById("innEpost").value = "";
+
+        document.getElementById("feilmeldingAntall").innerHTML = "";
+        document.getElementById("feilmeldingfornavn").innerHTML = "";
+        document.getElementById("feilmeldingetternavn").innerHTML = "";
+        document.getElementById("feilmeldingTelefonnr").innerHTML = "";
+        document.getElementById("feilmeldingEpost").innerHTML = "";
+    }
+
+
 }
 
 function hentAlle() {
