@@ -19,7 +19,7 @@ public class HomeController {
     @PostMapping("/lagre")
     public void lagreBillett(Billett innBillett, HttpServletResponse response) throws IOException {
         if(!repository.lagreBillett(innBillett)) {
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB - prøv igjen senere");
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB");
         }
     }
 
@@ -41,12 +41,16 @@ public class HomeController {
     }
 
     @PostMapping("/oppdaterEnBillett")
-    public void oppdaterEnBillett(Billett innBillett) {
-        repository.oppdaterEnBillet(innBillett);
+    public void oppdaterEnBillett(Billett innBillett, HttpServletResponse response) throws IOException {
+        if(!repository.oppdaterEnBillet(innBillett)) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB");
+        }
     }
 
     @GetMapping("/slettEnBillett")
-    public void slettEnBillett(int id) {
-        repository.slettEnBillett(id);
+    public void slettEnBillett(int id, HttpServletResponse response) throws IOException {
+        if(!repository.slettEnBillett(id)) {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB");
+        }
     }
 }
