@@ -6,19 +6,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="index.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <style>
-        #innAntall {
-            width: 30px;
-        }
-
-        #fornavn {
-            padding-right: 9px;
-        }
-
-        #epost {
-            padding-right: 26px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -28,41 +15,41 @@
                 <form class="form">
                     <div class="form-group">
                         <label for="velgFilm">Velg film: </label>
-                        <select id="velgFilm">
+                        <select id="velgFilm" class="form-control">
                             <option value="Oppenheimer">Oppenheimer</option>
                             <option value="Inception">Inception</option>
                             <option value="Interstellar">Interstellar</option>
-                        </select> <br/> <br/>
+                        </select> <br/>
                     </div>
 
                     <div class="form-group">
                         <label for="innAntall">Antall</label>
-                        <input id="innAntall" type="text">
-                        <label id="feilmeldingAntall" for="innAntall"></label><br/><br/>
+                        <input id="innAntall" class="form-control" type="text" >
+                        <label id="feilmeldingAntall" for="innAntall"></label> <br/>
                     </div>
 
                     <div class="form-group">
                         <label for="innFornavn" id="fornavn">Fornavn</label>
-                        <input id="innFornavn" type="text">
-                        <label id="feilmeldingfornavn" for="innFornavn"></label><br/>
+                        <input id="innFornavn" class="form-control" type="text">
+                        <label id="feilmeldingfornavn" for="innFornavn"></label>
                     </div>
 
                     <div class="form-group">
                         <label for="innEtternavn">Etternavn</label>
-                        <input id="innEtternavn" type="text">
-                        <label id="feilmeldingetternavn" for="innEtternavn"></label><br/>
+                        <input id="innEtternavn" class="form-control" type="text">
+                        <label id="feilmeldingetternavn" for="innEtternavn"></label>
                     </div>
 
                     <div class="form-group">
                         <label for="innTelefonnr">Telefonnr</label>
-                        <input id="innTelefonnr" type="text">
-                        <label id="feilmeldingTelefonnr" for="innTelefonnr"></label><br/>
+                        <input id="innTelefonnr" class="form-control" type="text">
+                        <label id="feilmeldingTelefonnr" for="innTelefonnr"></label>
                     </div>
 
                     <div class="form-group">
                         <label for="innEpost" id="epost">Epost</label>
-                        <input id="innEpost" type="text">
-                        <label id="feilmeldingEpost" for="innEpost"></label><br/> <br/>
+                        <input id="innEpost" class="form-control" type="text">
+                        <label id="feilmeldingEpost" for="innEpost"></label>
                     </div>
                 </form>
 
