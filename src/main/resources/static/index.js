@@ -100,15 +100,28 @@ function epostValidering(epost) {
 }
 
 function slettAlle() {
-    $.get("slettAlle", function() {
-        hentAlle()
+    $.ajax({
+        url: '/slettAlle',
+        type: 'DELETE'
+    }).done(function() {
+        hentAlle();
+    }).fail(function(xhr, status, error) {
+        // Handle error here
+        console.error('Delete failed:', error);
     });
+
 }
 
 function slettEnKunde(id) {
     const url = "/slettEnBillett?id=" + id;
-    $.get(url, function() {
-        hentAlle()
+
+    $.ajax({
+        url: url,
+        type: 'DELETE'
+    }).done(function() {
+        hentAlle();
+    }).fail(function(xhr, status, error) {
+        console.error('Delete failed:', error);
     })
 }
 
